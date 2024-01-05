@@ -1,7 +1,7 @@
 # Desafío para Dev
 
-Nombre postulante: [TU NOMBRE]
-Link a la app en producción: [LINK DEL DEPLOY]
+Nombre postulante: Nahuel Rosas
+Link a la app en producción: [[LINK DEL DEPLOY]](https://kimche-nahuel-rosas.vercel.app/)
 
 ## Instrucciones
 
