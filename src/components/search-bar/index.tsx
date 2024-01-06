@@ -55,6 +55,7 @@ export default function SearchBar() {
 					});
 				}}>
 				<input
+					id="search-bar-disabled"
 					type="text"
 					placeholder="Search your favorite character"
 					className="input input-bordered w-full max-w-[90vw] cursor-pointer pointer-events-none bg-stone-900"
@@ -68,6 +69,7 @@ export default function SearchBar() {
 				<div className="flex flex-row justify-center items-center w-screen h-16 gap-3">
 					<input
 						type="text"
+						id="search-bar"
 						value={search}
 						ref={inputRef}
 						onChange={(e) => startTransition(() => setSearch(e.target.value))}

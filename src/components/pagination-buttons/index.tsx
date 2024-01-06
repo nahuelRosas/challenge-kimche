@@ -29,7 +29,9 @@ export default function PaginationButtons({
 
 	function renderDots() {
 		return (
-			<button className="join-item btn btn-disabled bg-stone-900 hover:bg-stone-800 hover:text-2xl hover:border-stone-900">
+			<button
+				key={Math.random()}
+				className="join-item btn btn-disabled bg-stone-900 hover:bg-stone-800 hover:text-2xl hover:border-stone-900">
 				...
 			</button>
 		);
