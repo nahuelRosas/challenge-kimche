@@ -1,15 +1,9 @@
+import PaginationButtons from './components/pagination-buttons';
 import { gql, useQuery } from '@apollo/client';
 import SearchBar from './components/search-bar';
-import Card from './components/card';
-import {
-	JSXElementConstructor,
-	Key,
-	ReactElement,
-	ReactNode,
-	useState,
-} from 'react';
 import { JSX } from 'react/jsx-runtime';
-import PaginationButtons from './components/pagination-buttons';
+import Card from './components/card';
+import { useState } from 'react';
 
 function App() {
 	const [page, setPage] = useState(0);
@@ -65,6 +59,30 @@ function App() {
 								);
 							},
 						)}
+					{loading && (
+						<span className="loading loading-spinner text-accent my-10 p-6" />
+					)}
+					{error && (
+						<div
+							role="alert"
+							className="alert alert-error">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className="stroke-current shrink-0 h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+							<span>
+								{error.message || 'We have a problem, please try again later.'}
+							</span>
+						</div>
+					)}
 				</div>
 				<PaginationButtons
 					currentPage={page}
