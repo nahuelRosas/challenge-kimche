@@ -1,13 +1,13 @@
 /**
  * Renders a card component for a character.
  * @param character - The character object containing the following properties:
- *   - image: The URL of the character's image.
- *   - name: The name of the character.
- *   - status: The status of the character (e.g., "Alive", "Dead").
- *   - species: The species of the character.
- *   - gender: The gender of the character.
- *   - type: The type of the character.
- *   - location: An object representing the character's last known location, with a "name" property.
+ * - image: The URL of the character's image.
+ * - name: The name of the character.
+ * - status: The status of the character (e.g., "Alive", "Dead").
+ * - species: The species of the character.
+ * - gender: The gender of the character.
+ * - type: The type of the character.
+ * - location: An object representing the character's last known location, with a "name" property.
  * @returns The rendered card component.
  */
 export default function Card(character: {
@@ -34,13 +34,13 @@ export default function Card(character: {
 					{character.status && (
 						<div
 							className={`badge
-															${
-																character.status === 'Dead'
-																	? 'badge-error'
-																	: character.status === 'Alive'
-																	? 'badge-success'
-																	: 'badge-warning'
-															} text-2xl p-4 md:text-xs md:p-2`}>
+			${
+				character.status === 'Dead'
+					? 'badge-error'
+					: character.status === 'Alive'
+					? 'badge-success'
+					: 'badge-warning'
+			} text-2xl p-4 md:text-xs md:p-2`}>
 							{character.status}
 						</div>
 					)}
@@ -50,15 +50,30 @@ export default function Card(character: {
 					<p className="text-2xl md:text-xs">{character.location.name}</p>
 				</div>
 				<div className="flex flex-row flex-wrap gap-2 mt-3 ">
-					<div className="badge badge-outline text-2xl p-4 md:text-xs md:p-2">
-						{character.species}
+					<div className="flex items-center border border-white text-white px-2 py-1 rounded-full bg-transparent text-center">
+						<p
+							className={`text-2xl md:text-xs ${
+								character.type.length > 20 ? 'marquee' : ''
+							}`}>
+							{character.species}
+						</p>
 					</div>
-					<div className="badge badge-outline text-2xl p-4 md:text-xs md:p-2">
-						{character.gender}
+					<div className="flex items-center border border-white text-white px-2 py-1 rounded-full bg-transparent text-center">
+						<p
+							className={`text-2xl md:text-xs ${
+								character.type.length > 20 ? 'marquee' : ''
+							}`}>
+							{character.gender}
+						</p>
 					</div>
 					{character.type && (
-						<div className="badge badge-outline text-2xl p-4 md:text-xs md:p-2">
-							{character.type}
+						<div className="flex items-center border border-white text-white px-2 py-1 rounded-full bg-transparent text-center">
+							<p
+								className={`text-2xl md:text-xs ${
+									character.type.length > 20 ? 'marquee' : ''
+								}`}>
+								{character.type}
+							</p>
 						</div>
 					)}
 				</div>
