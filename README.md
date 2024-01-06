@@ -1,7 +1,7 @@
 # Desafío para Dev
 
 Nombre postulante: Nahuel Rosas
-Link a la app en producción: [[Link]](https://kimche-nahuel-rosas.vercel.app/)
+Link a la app en producción: [Link](https://kimche-nahuel-rosas.vercel.app/)
 
 ## Instrucciones
 
