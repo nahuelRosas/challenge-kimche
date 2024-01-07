@@ -44,6 +44,7 @@ export default function Drawer({
 				<select
 					id="status"
 					className="select select-success w-full"
+					value={filter['status'] ? filter['status'] : 'All'}
 					onChange={(e) =>
 						setFilter((prev) => {
 							if (e.target.value === 'All') return { ...prev, status: '' };
@@ -61,6 +62,7 @@ export default function Drawer({
 				<span className="label-text text-lg mb-3">Gender</span>
 				<select
 					id="gender"
+					value={filter['gender'] ? filter['gender'] : 'All'}
 					className="select select-info w-full"
 					onChange={(e) =>
 						setFilter((prev) => {
@@ -81,6 +83,7 @@ export default function Drawer({
 				<select
 					id="species"
 					className="select select-error w-full"
+					value={filter['species'] ? filter['species'] : 'All'}
 					onChange={(e) =>
 						setFilter((prev) => {
 							if (e.target.value === 'All') return { ...prev, species: '' };
@@ -101,6 +104,20 @@ export default function Drawer({
 					<option>Disease</option>
 				</select>
 			</div>
+
+			<button
+				className="btn btn-outline btn-secondary mt-5 w-full"
+				onClick={() => {
+					setFilter({
+						gender: '',
+						species: '',
+						name: '',
+						status: '',
+						type: '',
+					});
+				}}>
+				RESET FILTERS
+			</button>
 		</div>
 	);
 }

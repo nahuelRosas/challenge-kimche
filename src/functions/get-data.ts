@@ -17,7 +17,7 @@ const GET_CHARACTERS = gql`
 `;
 
 /**
- * Retrieves all types of characters from the server using ApolloClient.
+ * Retrieves all types of characters from the server using ApolloClient. DEV TOOL ONLY
  * @param client The ApolloClient instance used to make the query.
  * @returns An array of unique character types.
  */

@@ -9,7 +9,13 @@ import Card from '../card';
  * @returns The ElementPaginator component.
  */
 
-export default function ElementPaginator({ filter }: { filter: Character }) {
+export default function ElementPaginator({
+	filter,
+	setIdCharacter,
+}: {
+	filter: Character;
+	setIdCharacter: React.Dispatch<React.SetStateAction<number | null>>;
+}) {
 	const [page, setPage] = useState(0);
 
 	const GET_CHARACTERS = gql`
@@ -22,6 +28,7 @@ export default function ElementPaginator({ filter }: { filter: Character }) {
 					prev
 				}
 				results {
+					id
 					name
 					image
 					gender
@@ -42,31 +49,34 @@ export default function ElementPaginator({ filter }: { filter: Character }) {
 			filter,
 		},
 	});
-	console.log(data);
 	return (
 		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-700">
 			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 mx-5 my-5">
 				{data &&
 					data.characters.results.map(
-						(
-							character: JSX.IntrinsicAttributes & {
-								image: string;
-								name: string;
-								status: string;
-								species: string;
-								gender: string;
-								type: string;
-								location: { name: string };
-							},
-							index: number,
-						) => {
-							return (
-								<Card
-									{...character}
-									key={index}
-								/>
-							);
-						},
+						(character: {
+							gender: string;
+							id: number;
+							image: string;
+							location: { name: string };
+							name: string;
+							species: string;
+							status: string;
+							type: string;
+						}) => (
+							<Card
+								key={character.id}
+								gender={character.gender}
+								id={character.id}
+								image={character.image}
+								location={character.location}
+								name={character.name}
+								setIdCharacter={setIdCharacter}
+								species={character.species}
+								status={character.status}
+								type={character.type}
+							/>
+						),
 					)}
 				{loading && (
 					<span className="loading loading-spinner text-accent my-10 p-6" />
