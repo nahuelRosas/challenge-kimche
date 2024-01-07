@@ -7,17 +7,25 @@ import Card from '../card';
  * @returns The ElementPaginator component.
  */
 
-export default function ElementPaginator() {
+export default function ElementPaginator({
+	search,
+	status,
+	gender,
+}: {
+	search: string;
+	status: string;
+	gender: string;
+}) {
 	const [page, setPage] = useState(0);
-	const { loading, error, data } = useQuery(gql`
-		{
-			characters(page: ${page}) {
+
+	const GET_CHARACTERS = gql`
+		query GetCharacters($page: Int!, $filter: FilterCharacter) {
+			characters(page: $page, filter: $filter) {
 				info {
 					count
 					pages
 					next
 					prev
-					__typename
 				}
 				results {
 					name
@@ -32,7 +40,18 @@ export default function ElementPaginator() {
 				}
 			}
 		}
-	`);
+	`;
+
+	const { loading, error, data } = useQuery(GET_CHARACTERS, {
+		variables: {
+			page,
+			filter: {
+				name: search,
+				status,
+				gender,
+			},
+		},
+	});
 	return (
 		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-900">
 			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 my-2">
