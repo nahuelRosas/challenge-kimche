@@ -17,7 +17,7 @@ export default function Drawer({
 	setFilter: React.Dispatch<React.SetStateAction<Character>>;
 	drawerOpen: boolean;
 	filter: Character;
-}) {
+}): JSX.Element {
 	return (
 		<div
 			className={`overflow-hidden md:relative p-5 bg-stone-900 fixed left-0 z-10 w-screen h-full md:w-auto 
