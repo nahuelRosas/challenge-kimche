@@ -64,7 +64,6 @@ export default function App() {
 						</label>
 					}
 				/>
-				M
 			</div>
 			<div className="w-full h-full overflow-y-auto flex flex-row justify-around">
 				<Drawer
