@@ -2,20 +2,13 @@ import PaginationButtons from '../pagination-buttons';
 import { useQuery, gql } from '@apollo/client';
 import { useState } from 'react';
 import Card from '../card';
+import { Character } from '../../types';
 /**
  * Renders a paginated list of characters.
  * @returns The ElementPaginator component.
  */
 
-export default function ElementPaginator({
-	search,
-	status,
-	gender,
-}: {
-	search: string;
-	status: string;
-	gender: string;
-}) {
+export default function ElementPaginator({ filter }: { filter: Character }) {
 	const [page, setPage] = useState(0);
 
 	const GET_CHARACTERS = gql`
@@ -45,11 +38,7 @@ export default function ElementPaginator({
 	const { loading, error, data } = useQuery(GET_CHARACTERS, {
 		variables: {
 			page,
-			filter: {
-				name: search,
-				status,
-				gender,
-			},
+			filter,
 		},
 	});
 	return (

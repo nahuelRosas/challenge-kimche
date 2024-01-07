@@ -1,25 +1,35 @@
 import { startTransition, useEffect } from 'react';
+import { Character } from '../../types';
+/**
+ * SearchBar component.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {JSX.Element} props.leftElement - The left element to be displayed in the search bar.
+ * @param {Character} props.filter - The filter object containing the character properties.
+ * @param {React.Dispatch<React.SetStateAction<Character>>} props.setFilter - The function to update the filter object.
+ * @returns {JSX.Element} The rendered SearchBar component.
+ */
 
 export default function SearchBar({
 	leftElement,
-	rightElement,
-	search,
-	setSearch,
+	filter,
+	setFilter,
 }: {
-	setSearch: (value: string) => void;
 	leftElement?: JSX.Element;
-	rightElement?: JSX.Element;
-	search: string;
-}) {
+	filter: Character;
+	setFilter: React.Dispatch<React.SetStateAction<Character>>;
+}): JSX.Element {
 	useEffect(() => {
 		const handleKeyDown = (event: { keyCode: number }) => {
-			if (event.keyCode === 27) startTransition(() => setSearch(''));
+			if (event.keyCode === 27)
+				startTransition(() => setFilter((prev) => ({ ...prev, name: '' })));
 		};
 		document.addEventListener('keydown', handleKeyDown);
 		return () => {
 			document.removeEventListener('keydown', handleKeyDown);
 		};
-	}, [setSearch]);
+	}, [setFilter]);
 	return (
 		<>
 			<div className="cursor-pointer w-full max-w-screen px-4 justify-center items-center gap-3 z-40">
@@ -27,12 +37,16 @@ export default function SearchBar({
 				<input
 					type="text"
 					id="search-bar"
-					value={search}
-					onChange={(e) => startTransition(() => setSearch(e.target.value))}
+					value={filter['name']}
+					onChange={(e) =>
+						setFilter((prev) => ({
+							...prev,
+							['name']: e.target.value,
+						}))
+					}
 					placeholder="Search your favorite character"
 					className="input input-bordered text-white w-screen max-w-[90dvw] cursor-pointer bg-stone-900"
 				/>
-				{rightElement}
 			</div>
 		</>
 	);

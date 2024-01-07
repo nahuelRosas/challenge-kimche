@@ -2,19 +2,24 @@ import ElementPaginator from './components/element-paginator';
 import SearchBar from './components/search-bar';
 import Drawer from './components/drawer';
 import { useState } from 'react';
+import { Character } from './types';
 
 function App() {
 	const [drawerOpen, setDrawerOpen] = useState(false);
-	const [search, setSearch] = useState('');
-	const [status, setStatus] = useState('');
-	const [gender, setGender] = useState('');
+	const [filter, setFilter] = useState<Character>({
+		name: '',
+		status: '',
+		gender: '',
+		type: '',
+		species: '',
+	});
 
 	return (
 		<div className="flex flex-col items-center justify-center w-screen h-[100dvh] bg-stone-800 text-white">
 			<div className="relative flex flex-row flex-wrap justify-around items-center top-0 left-0 navbar bg-stone-900 w-screen h-16 z-10">
 				<SearchBar
-					search={search}
-					setSearch={setSearch}
+					filter={filter}
+					setFilter={setFilter}
 					leftElement={
 						<label className="btn btn-circle swap swap-rotate join-item btn btn-square bg-stone-900 border-stone-800 hover:bg-stone-800 hover:text-2xl hover:border-stone-900 border-stone-800 text-white">
 							<input
@@ -44,16 +49,10 @@ function App() {
 			<div className="w-full h-full overflow-y-auto flex flex-row justify-around">
 				<Drawer
 					drawerOpen={drawerOpen}
-					setStatus={setStatus}
-					status={status}
-					gender={gender}
-					setGender={setGender}
+					filter={filter}
+					setFilter={setFilter}
 				/>
-				<ElementPaginator
-					search={search}
-					status={status}
-					gender={gender}
-				/>
+				<ElementPaginator filter={filter} />
 			</div>
 		</div>
 	);
