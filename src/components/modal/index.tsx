@@ -21,7 +21,7 @@ export default function Modal({
 	setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	idCharacter: number | null;
 	setIdCharacter: React.Dispatch<React.SetStateAction<number | null>>;
-}) {
+}): JSX.Element {
 	const GET_CHARACTER = gql`
 		query GetCharacter($id: ID!) {
 			character(id: $id) {
@@ -63,7 +63,28 @@ export default function Modal({
 				setModalOpen(false);
 				setIdCharacter(null);
 			}}>
-			<div onClick={(e) => e.stopPropagation()}>
+			<div
+				onClick={(e) => e.stopPropagation()}
+				className="relative">
+				<button
+					className="btn btn-square absolute bg-stone-900 top-0 right-0 m-[0.25rem]"
+					onClick={() => {
+						setModalOpen(false);
+						setIdCharacter(null);
+					}}>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						className="stroke-current shrink-0 h-6 w-6"
+						fill="none"
+						viewBox="0 0 24 24">
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							strokeWidth="2"
+							d="M6 18L18 6M6 6l12 12"
+						/>
+					</svg>
+				</button>
 				{loading && (
 					<span className="loading loading-spinner text-accent my-10 p-6" />
 				)}
