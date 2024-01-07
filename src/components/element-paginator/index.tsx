@@ -42,6 +42,7 @@ export default function ElementPaginator({ filter }: { filter: Character }) {
 			filter,
 		},
 	});
+	console.log(data);
 	return (
 		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-700">
 			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 mx-5 my-5">
@@ -70,6 +71,25 @@ export default function ElementPaginator({ filter }: { filter: Character }) {
 				{loading && (
 					<span className="loading loading-spinner text-accent my-10 p-6" />
 				)}
+
+				{data && !data.characters.info.count && (
+					<div className="flex flex-col items-center justify-center w-full h-full">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							className="stroke-current shrink-0 h-16 w-16"
+							fill="none"
+							viewBox="0 0 24 24">
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="2"
+								d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+							/>
+						</svg>
+						<span className="text-2xl font-bold">No results found</span>
+					</div>
+				)}
+
 				{error && (
 					<div
 						role="alert"
@@ -94,7 +114,7 @@ export default function ElementPaginator({ filter }: { filter: Character }) {
 			</div>
 			<PaginationButtons
 				currentPage={page}
-				totalPages={data?.characters.info.pages || 42}
+				totalPages={data?.characters.info.pages}
 				onClick={setPage}
 			/>
 		</div>

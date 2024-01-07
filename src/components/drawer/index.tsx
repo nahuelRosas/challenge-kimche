@@ -20,7 +20,7 @@ export default function Drawer({
 }) {
 	return (
 		<div
-			className={`overflow-hidden md:relative p-5 bg-stone-900 fixed left-0 z-10 w-screen h-screen md:w-auto 
+			className={`overflow-hidden md:relative p-5 bg-stone-900 fixed left-0 z-10 w-screen h-full md:w-auto 
 			${drawerOpen ? 'visible' : 'hidden'} `}>
 			<h1 className="text-2xl font-bold text-center text-white">Filter by</h1>
 			<div className="form-control">

@@ -39,7 +39,7 @@ export default function PaginationButtons({
 
 	function generatePageButtons() {
 		const buttons = [];
-		const totalPagesToShow = 7;
+		const totalPagesToShow = 4;
 
 		if (totalPages <= totalPagesToShow) {
 			for (let i = 1; i <= totalPages; i++) {

@@ -1,17 +1,17 @@
 import ElementPaginator from './components/element-paginator';
 import SearchBar from './components/search-bar';
 import Drawer from './components/drawer';
-import { useState } from 'react';
 import { Character } from './types';
+import { useState } from 'react';
 
 function App() {
 	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [filter, setFilter] = useState<Character>({
-		name: '',
+		species: '',
 		status: '',
 		gender: '',
+		name: '',
 		type: '',
-		species: '',
 	});
 
 	return (
