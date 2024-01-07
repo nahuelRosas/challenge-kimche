@@ -1,7 +1,7 @@
 # Desafío para Dev
 
 Nombre postulante: Nahuel Rosas
-Link a la app en producción:[rick-and-morty-kimche.vercel.app](https://rick-and-morty-kimche.vercel.app/)
+Link a la app en producción: [rick-and-morty-kimche.vercel.app](https://rick-and-morty-kimche.vercel.app/)
 ## Instrucciones
 
 - Desarrolla una aplicación web con React y Vite que permita a los usuarios buscar y visualizar información sobre personajes de la serie "Rick and Morty" utilizando la [Api de Rick and Morty](https://rickandmortyapi.com/documentation/#graphql)
