@@ -79,7 +79,7 @@ export default function Drawer({
 				</select>
 			</div>
 			<div className="form-control">
-				<span className="label-text text-lg mb-3">Gender</span>
+				<span className="label-text text-lg mb-3">Species</span>
 				<select
 					id="species"
 					className="select select-error w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
@@ -118,6 +118,16 @@ export default function Drawer({
 				}}>
 				RESET FILTERS
 			</button>
+			<div className="flex flex-row justify-center items-center mt-5">
+				<span className="label-text text-sm mb-3 text-center">
+					Design by Nahuel Rosas Using{' '}
+					<a
+						className="text-blue-500 hover:text-blue-600"
+						href="https://rickandmortyapi.com/">
+						Rick and Morty API
+					</a>
+				</span>
+			</div>
 		</div>
 	);
 }
