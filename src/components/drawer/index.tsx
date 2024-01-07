@@ -20,11 +20,11 @@ export default function Drawer({
 }): JSX.Element {
 	return (
 		<div
-			className={`overflow-hidden md:relative p-5 bg-stone-900 fixed left-0 z-10 w-screen h-full md:w-auto 
+			className={`overflow-hidden md:relative p-5 bg-stone-900 fixed left-0 z-10 w-screen h-full md:w-auto flex flex-col gap-2
 			${drawerOpen ? 'visible' : 'hidden'} `}>
-			<h1 className="text-2xl font-bold text-center text-white">Filter by</h1>
+			<h1 className="text-md font-bold text-center text-white">Filter by</h1>
 			<div className="form-control">
-				<span className="label-text text-lg mb-3">Type</span>
+				<span className="label-text text-lg mb-1">Type</span>
 				<input
 					type="text"
 					id="search-bar-type"
@@ -40,7 +40,7 @@ export default function Drawer({
 				/>
 			</div>
 			<div className="form-control">
-				<span className="label-text text-lg mb-3">Status</span>
+				<span className="label-text text-lg mb-1">Status</span>
 				<select
 					id="status"
 					className="select select-success w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
@@ -59,7 +59,7 @@ export default function Drawer({
 				</select>
 			</div>
 			<div className="form-control">
-				<span className="label-text text-lg mb-3">Gender</span>
+				<span className="label-text text-lg mb-1">Gender</span>
 				<select
 					id="gender"
 					value={filter['gender'] ? filter['gender'] : 'All'}
@@ -79,7 +79,7 @@ export default function Drawer({
 				</select>
 			</div>
 			<div className="form-control">
-				<span className="label-text text-lg mb-3">Species</span>
+				<span className="label-text text-lg mb-1">Species</span>
 				<select
 					id="species"
 					className="select select-error w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
@@ -104,9 +104,8 @@ export default function Drawer({
 					<option>Disease</option>
 				</select>
 			</div>
-
 			<button
-				className="btn btn-outline btn-secondary mt-5 w-full"
+				className="btn btn-outline btn-secondary w-full"
 				onClick={() => {
 					setFilter({
 						gender: '',
@@ -118,7 +117,7 @@ export default function Drawer({
 				}}>
 				RESET FILTERS
 			</button>
-			<div className="flex flex-row justify-center items-center mt-5">
+			<div className="flex flex-row justify-center items-center">
 				<span className="label-text text-sm mb-3 text-center">
 					Design by Nahuel Rosas Using{' '}
 					<a
