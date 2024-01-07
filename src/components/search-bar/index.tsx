@@ -7,7 +7,13 @@ import Card from '../card';
  * The search bar allows users to search for their favorite character.
  * It displays a list of characters based on the search query.
  */
-export default function SearchBar() {
+export default function SearchBar({
+	leftElement,
+	rightElement,
+}: {
+	leftElement?: JSX.Element;
+	rightElement?: JSX.Element;
+}) {
 	const [visible, setVisible] = useState(false);
 	const [search, setSearch] = useState('');
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -46,27 +52,31 @@ export default function SearchBar() {
 	}, []);
 	return (
 		<>
-			<div
-				className="cursor-pointer w-full max-w-screen px-4 justify-center items-center"
-				onClick={() => {
-					startTransition(() => {
-						setVisible(!visible);
-						setSearch('');
-					});
-				}}>
-				<input
-					id="search-bar-disabled"
-					type="text"
-					placeholder="Search your favorite character"
-					className="input input-bordered w-full max-w-[90vw] cursor-pointer pointer-events-none bg-stone-900"
-				/>
+			<div className="cursor-pointer w-full max-w-screen px-4 justify-center items-center gap-3 z-40">
+				{leftElement}
+				<div
+					className="w-full max-w-[90vw] cursor-pointer"
+					onClick={() => {
+						startTransition(() => {
+							setVisible(!visible);
+							setSearch('');
+						});
+					}}>
+					<input
+						id="search-bar-disabled"
+						type="text"
+						placeholder="Search your favorite character"
+						className="input input-bordered w-full pointer-events-none bg-stone-900 text-white"
+					/>
+				</div>
+				{rightElement}
 			</div>
 			<div
 				className={`${
 					!visible && 'hidden'
 				} absolute top-0 right-0 z-50 flex flex-col w-screen h-[100dvh] backdrop-filter backdrop-blur-xl justify-center items-center pt-5
 				`}>
-				<div className="flex flex-row justify-center items-center w-screen h-16 gap-3">
+				<div className="flex flex-row justify-center items-center w-screen gap-3">
 					<input
 						type="text"
 						id="search-bar"
@@ -74,7 +84,7 @@ export default function SearchBar() {
 						ref={inputRef}
 						onChange={(e) => startTransition(() => setSearch(e.target.value))}
 						placeholder="Search your favorite character"
-						className="input input-bordered w-screen max-w-[90dvw] text-2xl cursor-pointer min-h-[10dvh] p-2 h-lg bg-stone-900"
+						className="input input-bordered text-white w-screen max-w-[90dvw] text-2xl cursor-pointer  p-2 h-lg bg-stone-900"
 					/>
 					<button
 						className="btn btn-square bg-stone-900 border-stone-800	hover:bg-stone-800 hover:text-2xl hover:border-stone-900"

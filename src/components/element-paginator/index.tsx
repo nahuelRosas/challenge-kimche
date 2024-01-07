@@ -2,10 +2,9 @@ import PaginationButtons from '../pagination-buttons';
 import { useQuery, gql } from '@apollo/client';
 import { useState } from 'react';
 import Card from '../card';
-
 /**
  * Renders a paginated list of characters.
- * @returns JSX.Element
+ * @returns The ElementPaginator component.
  */
 
 export default function ElementPaginator() {
@@ -35,8 +34,8 @@ export default function ElementPaginator() {
 		}
 	`);
 	return (
-		<>
-			<div className="w-screen max-w-[90dvw] h-screen max-h-[75dvh] overflow-y-auto flex flex-row flex-wrap mt-5 justify-around gap-4 my-4">
+		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-900">
+			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 my-2">
 				{data &&
 					data.characters.results.map(
 						(
@@ -89,6 +88,6 @@ export default function ElementPaginator() {
 				totalPages={data?.characters.info.pages || 42}
 				onClick={setPage}
 			/>
-		</>
+		</div>
 	);
 }

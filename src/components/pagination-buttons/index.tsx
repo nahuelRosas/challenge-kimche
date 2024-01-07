@@ -1,9 +1,9 @@
 /**
- * Renders a pagination component with buttons for navigating between pages.
- *
- * @param currentPage - The current active page.
+ * Renders pagination buttons based on the current page and total number of pages.
+ * @param currentPage - The current page number.
  * @param totalPages - The total number of pages.
  * @param onClick - The callback function to handle button click events.
+ * @returns The rendered pagination buttons.
  */
 export default function PaginationButtons({
 	currentPage,
@@ -20,7 +20,7 @@ export default function PaginationButtons({
 				key={page}
 				className={`join-item btn text-white ${
 					page === currentPage ? 'bg-stone-800' : 'bg-stone-900'
-				} hover:bg-stone-800 hover:text-2xl hover:border-stone-900`}
+				} hover:bg-stone-800 hover:text-2xl hover:border-stone-900 border-stone-800`}
 				onClick={() => onClick(page)}>
 				{page}
 			</button>
@@ -71,6 +71,8 @@ export default function PaginationButtons({
 	}
 
 	return (
-		<div className="join">{generatePageButtons().map((button) => button)}</div>
+		<div className="join w-full flex justify-center align-center my-2">
+			{generatePageButtons().map((button) => button)}
+		</div>
 	);
 }
