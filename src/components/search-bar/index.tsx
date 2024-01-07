@@ -1,14 +1,13 @@
 import { startTransition, useEffect } from 'react';
 import { Character } from '../../types';
 /**
- * SearchBar component.
+ * Renders a search bar component.
  *
- * @component
  * @param {Object} props - The component props.
- * @param {JSX.Element} props.leftElement - The left element to be displayed in the search bar.
- * @param {Character} props.filter - The filter object containing the character properties.
+ * @param {JSX.Element} props.leftElement - The element to be rendered on the left side of the search bar.
+ * @param {Character} props.filter - The filter object containing the search criteria.
  * @param {React.Dispatch<React.SetStateAction<Character>>} props.setFilter - The function to update the filter object.
- * @returns {JSX.Element} The rendered SearchBar component.
+ * @returns {JSX.Element} The rendered search bar component.
  */
 
 export default function SearchBar({
@@ -32,7 +31,7 @@ export default function SearchBar({
 	}, [setFilter]);
 	return (
 		<>
-			<div className="cursor-pointer w-full max-w-screen px-4 justify-center items-center gap-3 z-40">
+			<div className="cursor-pointer w-full max-w-screen px-4 justify-center items-center gap-3 ">
 				{leftElement}
 				<input
 					type="text"

@@ -1,10 +1,11 @@
 import PaginationButtons from '../pagination-buttons';
 import { useQuery, gql } from '@apollo/client';
+import { Character } from '../../types';
 import { useState } from 'react';
 import Card from '../card';
-import { Character } from '../../types';
 /**
- * Renders a paginated list of characters.
+ * Renders a paginated list of characters based on the provided filter.
+ * @param filter - The filter to apply to the characters.
  * @returns The ElementPaginator component.
  */
 
@@ -42,8 +43,8 @@ export default function ElementPaginator({ filter }: { filter: Character }) {
 		},
 	});
 	return (
-		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-900">
-			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 my-2">
+		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-700">
+			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 mx-5 my-5">
 				{data &&
 					data.characters.results.map(
 						(

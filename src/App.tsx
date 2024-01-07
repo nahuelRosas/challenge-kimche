@@ -15,8 +15,8 @@ function App() {
 	});
 
 	return (
-		<div className="flex flex-col items-center justify-center w-screen h-[100dvh] bg-stone-800 text-white">
-			<div className="relative flex flex-row flex-wrap justify-around items-center top-0 left-0 navbar bg-stone-900 w-screen h-16 z-10">
+		<div className="flex flex-col items-center justify-center w-[100dvw] h-[100dvh] bg-stone-800 text-white overflow-hidden">
+			<div className="relative flex flex-row flex-wrap justify-around items-center top-0 left-0 navbar bg-stone-900 w-screen h-16">
 				<SearchBar
 					filter={filter}
 					setFilter={setFilter}
