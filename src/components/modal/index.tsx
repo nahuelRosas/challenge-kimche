@@ -89,15 +89,15 @@ export default function Modal({
 					</div>
 				)}
 				{data && (
-					<div className="bg-stone-900 shadow-xl flex flex-row">
+					<div className="bg-stone-900 shadow-xl rounded-xl flex flex-col justify-center items-center sm:flex-row">
 						<figure>
 							<img
-								className="object-cover h-full"
+								className="object-cover rounded-xl h-full"
 								src={data?.character.image}
 								alt={data?.character.name}
 							/>
 						</figure>
-						<div className="card-body">
+						<div className="max-w-[70dvw] p-2 gap-1">
 							<div className="flex flex-col flex-wrap gap-1">
 								<span className="card-title text-pretty overflow-hidden">
 									{data?.character.name}

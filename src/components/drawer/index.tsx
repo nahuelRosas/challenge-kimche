@@ -35,7 +35,7 @@ export default function Drawer({
 							['type']: e.target.value,
 						}))
 					}
-					className="input input-bordered text-white w-screen text-sm w-[100%] bg-stone-900 px-5"
+					className="input input-bordered text-white w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
 					placeholder="Search by type"
 				/>
 			</div>
@@ -43,7 +43,7 @@ export default function Drawer({
 				<span className="label-text text-lg mb-3">Status</span>
 				<select
 					id="status"
-					className="select select-success w-full"
+					className="select select-success w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
 					value={filter['status'] ? filter['status'] : 'All'}
 					onChange={(e) =>
 						setFilter((prev) => {
@@ -63,7 +63,7 @@ export default function Drawer({
 				<select
 					id="gender"
 					value={filter['gender'] ? filter['gender'] : 'All'}
-					className="select select-info w-full"
+					className="select select-info w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
 					onChange={(e) =>
 						setFilter((prev) => {
 							if (e.target.value === 'All') return { ...prev, gender: '' };
@@ -82,7 +82,7 @@ export default function Drawer({
 				<span className="label-text text-lg mb-3">Gender</span>
 				<select
 					id="species"
-					className="select select-error w-full"
+					className="select select-error w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
 					value={filter['species'] ? filter['species'] : 'All'}
 					onChange={(e) =>
 						setFilter((prev) => {
