@@ -77,13 +77,13 @@ export default function Card({
 						<p className={`${gender.length > 20 ? 'marquee' : ''}`}>{gender}</p>
 					</div>
 				</div>
-				<div className="flex w-full">
-					{type && (
+				{type && (
+					<div className="flex w-full mt-3">
 						<div className="flex text-xs items-center border border-white text-white px-2 py-1 rounded-full bg-transparent text-center">
 							<p className={`${type.length > 20 ? 'marquee' : ''}`}>{type}</p>
 						</div>
-					)}
-				</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);
