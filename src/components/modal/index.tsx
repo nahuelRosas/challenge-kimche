@@ -67,12 +67,11 @@ export default function Modal({
 			{modalOpen && (
 				<div
 					onClick={(e) => e.stopPropagation()}
-					className="relative flex min-h-[90dvh] max-h-[90dvh] min-w-[90dvw] max-w-[90dvw] 
-						justify-center items-center overflow-hidden sm:min-w-[auto] sm:max-w-[auto] sm:min-h-[auto] sm:max-h-[auto]
+					className="relative flex max-w-[90vw] max-h-[90vh] max-w-[90vw] max-h-[90vh] justify-center items-center overflow-hidden sm:min-w-[auto] sm:max-w-[auto] sm:min-h-[auto] sm:max-h-[auto]
 						">
 					{(data || error) && (
 						<button
-							className={`btn btn-square absolute top-0 right-0 m-5 z-30 border-white border-2 text-white 
+							className={`btn btn-square absolute m-2 top-0 right-0 z-30 border-white border-2 text-white 
 							${
 								data
 									? 'bg-stone-900 hover:bg-stone-800 hover:border-stone-900 hover:text-white'
