@@ -119,7 +119,7 @@ export default function Modal({
 						<div className="relative bg-stone-900 shadow-xl rounded-xl flex flex-col justify-center items-center sm:flex-row">
 							<figure className="relative rounded-xl">
 								<img
-									className="relative object-cover mt-5 px-2 rounded-xl sm:m-0"
+									className="relative object-cover mt-2 px-2 rounded-xl sm:m-0"
 									src={data?.character.image}
 									alt={data?.character.name}
 								/>
