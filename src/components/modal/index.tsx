@@ -71,8 +71,7 @@ export default function Modal({
 						">
 					{(data || error) && (
 						<button
-							className={`btn btn-square absolute m-2 top-0 right-0 z-30 border-white border-2 text-white 
-							${
+							className={`btn btn-square absolute m-2 top-0 right-0 z-30 border-white border-2 text-white ${
 								data
 									? 'bg-stone-900 hover:bg-stone-800 hover:border-stone-900 hover:text-white'
 									: 'bg-red-900 hover:bg-red-800 hover:border-red-900 hover:text-red-900'

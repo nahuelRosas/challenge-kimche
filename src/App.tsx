@@ -10,9 +10,9 @@ import { Character } from './types';
  */
 
 export default function App() {
-	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [idCharacter, setIdCharacter] = useState<number>(0);
 	const [modalOpen, setModalOpen] = useState(false);
+	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [filter, setFilter] = useState<Character>({
 		species: '',
 		status: '',
