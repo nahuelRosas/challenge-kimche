@@ -1,7 +1,7 @@
 import PaginationButtons from '../pagination-buttons';
 import { useQuery, gql } from '@apollo/client';
 import { Character } from '../../types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../card';
 /**
  * Renders a paginated list of characters based on the provided filter.
@@ -49,6 +49,11 @@ export default function ElementPaginator({
 			filter,
 		},
 	});
+
+	useEffect(() => {
+		setPage(1);
+	}, [filter]);
+
 	return (
 		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-700">
 			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 mx-5 my-5">
