@@ -18,9 +18,9 @@ export default function PaginationButtons({
 		return (
 			<button
 				key={page}
-				className={`join-item btn text-white ${
+				className={`join-item btn text-white text-xs ${
 					page === currentPage ? 'bg-stone-800' : 'bg-stone-900'
-				} hover:bg-stone-800 hover:text-2xl hover:border-stone-900 border-stone-800`}
+				} hover:bg-stone-800 hover:text-lg hover:border-stone-900 border-stone-800`}
 				onClick={() => onClick(page)}>
 				{page}
 			</button>
@@ -31,7 +31,7 @@ export default function PaginationButtons({
 		return (
 			<button
 				key={Math.random()}
-				className="join-item btn btn-disabled bg-stone-900 hover:bg-stone-800 hover:text-2xl hover:border-stone-900">
+				className="join-item btn btn-disabled bg-stone-900 hover:bg-stone-800 hover:text-lg hover:border-stone-900">
 				...
 			</button>
 		);
@@ -54,8 +54,8 @@ export default function PaginationButtons({
 				buttons.push(renderDots());
 			}
 
-			const start = Math.max(currentPage - 2, 1);
-			const end = Math.min(currentPage + 2, totalPages);
+			const start = Math.max(currentPage - 1, 1);
+			const end = Math.min(currentPage + 1, totalPages);
 
 			for (let i = start; i <= end; i++) {
 				buttons.push(renderPageButton(i));
@@ -71,7 +71,7 @@ export default function PaginationButtons({
 	}
 
 	return (
-		<div className="join w-full flex justify-center align-center my-2">
+		<div className="join w-auto flex justify-center align-center my-2">
 			{generatePageButtons().map((button) => button)}
 		</div>
 	);

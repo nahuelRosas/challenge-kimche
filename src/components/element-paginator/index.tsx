@@ -55,8 +55,8 @@ export default function ElementPaginator({
 	}, [filter]);
 
 	return (
-		<div className="flex flex-col w-full h-full justify-center align-center bg-stone-700">
-			<div className="w-auto h-screen overflow-y-auto flex flex-row flex-wrap justify-around gap-4 mx-5 my-5">
+		<div className="flex flex-col min-w-[80dvw] h-full justify-center align-center bg-stone-700">
+			<div className="min-w-[80dvw] py-2 h-[100%] overflow-y-auto flex flex-row flex-wrap justify-around gap-4 m-2">
 				{data &&
 					data.characters.results.map(
 						(character: {
@@ -127,11 +127,13 @@ export default function ElementPaginator({
 					</div>
 				)}
 			</div>
-			<PaginationButtons
-				currentPage={page}
-				totalPages={data?.characters.info.pages}
-				onClick={setPage}
-			/>
+			{data && data.characters.info.count > 0 && (
+				<PaginationButtons
+					currentPage={page}
+					totalPages={data?.characters.info.pages}
+					onClick={setPage}
+				/>
+			)}
 		</div>
 	);
 }

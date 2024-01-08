@@ -67,12 +67,17 @@ export default function Modal({
 			{modalOpen && (
 				<div
 					onClick={(e) => e.stopPropagation()}
-					className="relative max-h-[90dvh] max-w-[90dvw]">
+					className="relative flex min-h-[90dvh] max-h-[90dvh] min-w-[90dvw] max-w-[90dvw] 
+						justify-center items-center overflow-hidden sm:min-w-[auto] sm:max-w-[auto] sm:min-h-[auto] sm:max-h-[auto]
+						">
 					{(data || error) && (
 						<button
-							className={`btn btn-square absolute z-30 ${
-								data ? 'bg-stone-900' : 'bg-red-900'
-							} top-0 right-0 m-[0.5rem] border-white border-2 text-white hover:bg-stone-800 hover:border-stone-900 hover:text-white`}
+							className={`btn btn-square absolute top-0 right-0 m-5 z-30 border-white border-2 text-white 
+							${
+								data
+									? 'bg-stone-900 hover:bg-stone-800 hover:border-stone-900 hover:text-white'
+									: 'bg-red-900 hover:bg-red-800 hover:border-red-900 hover:text-red-900'
+							}`}
 							onClick={() => {
 								setModalOpen(false);
 								setIdCharacter(0);
@@ -117,9 +122,9 @@ export default function Modal({
 					)}
 					{data && (
 						<div className="relative bg-stone-900 shadow-xl rounded-xl flex flex-col justify-center items-center sm:flex-row">
-							<figure className="relative rounded-xl">
+							<figure className="relative rounded-xl w-[100%] h-[100%]">
 								<img
-									className="relative object-cover mt-2 px-2 rounded-xl sm:m-0"
+									className="relative object-cover w-[100%] h-[100%] rounded-xl sm:m-0"
 									src={data?.character.image}
 									alt={data?.character.name}
 								/>
