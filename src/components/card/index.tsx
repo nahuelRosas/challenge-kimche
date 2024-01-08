@@ -23,7 +23,7 @@ export default function Card({
 	type,
 	id,
 }: {
-	setIdCharacter: React.Dispatch<React.SetStateAction<number | null>>;
+	setIdCharacter: React.Dispatch<React.SetStateAction<number>>;
 	location: { name: string };
 	species: string;
 	status: string;

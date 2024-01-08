@@ -7,8 +7,8 @@ import { gql, useQuery } from '@apollo/client';
  * @param {Object} props - The component props.
  * @param {boolean} props.modalOpen - Flag indicating whether the modal is open or not.
  * @param {React.Dispatch<React.SetStateAction<boolean>>} props.setModalOpen - Function to set the modal open state.
- * @param {number | null} props.idCharacter - The ID of the character to fetch.
- * @param {React.Dispatch<React.SetStateAction<number | null>>} props.setIdCharacter - Function to set the ID of the character to fetch.
+ * @param {number} props.idCharacter - The ID of the character to fetch.
+ * @param {React.Dispatch<React.SetStateAction<number>>} props.setIdCharacter - Function to set the ID of the character to fetch.
  * @returns {JSX.Element} The rendered Modal component.
  */
 export default function Modal({
@@ -19,8 +19,8 @@ export default function Modal({
 }: {
 	modalOpen: boolean;
 	setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-	idCharacter: number | null;
-	setIdCharacter: React.Dispatch<React.SetStateAction<number | null>>;
+	idCharacter: number;
+	setIdCharacter: React.Dispatch<React.SetStateAction<number>>;
 }): JSX.Element {
 	const GET_CHARACTER = gql`
 		query GetCharacter($id: ID!) {
@@ -53,6 +53,7 @@ export default function Modal({
 			id: idCharacter,
 		},
 	});
+
 	return (
 		<div
 			className={`${
@@ -61,136 +62,139 @@ export default function Modal({
 				`}
 			onClick={() => {
 				setModalOpen(false);
-				setIdCharacter(null);
+				setIdCharacter(0);
 			}}>
-			<div
-				onClick={(e) => e.stopPropagation()}
-				className="relative">
-				{(data || error) && (
-					<button
-						className={`btn btn-square absolute ${
-							data ? 'bg-stone-900' : 'bg-red-900'
-						} top-0 right-0 m-[0.25rem]`}
-						onClick={() => {
-							setModalOpen(false);
-							setIdCharacter(null);
-						}}>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className="stroke-current shrink-0 h-6 w-6"
-							fill="none"
-							viewBox="0 0 24 24">
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M6 18L18 6M6 6l12 12"
-							/>
-						</svg>
-					</button>
-				)}
-				{loading && (
-					<span className="loading loading-spinner text-accent my-10 p-6" />
-				)}
-				{error && (
-					<div
-						role="alert"
-						className="alert alert-error">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className="stroke-current shrink-0 h-6 w-6"
-							fill="none"
-							viewBox="0 0 24 24">
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-							/>
-						</svg>
-						<span>
-							{error.message || 'We have a problem, please try again later.'}
-						</span>
-					</div>
-				)}
-				{data && (
-					<div className="bg-stone-900 shadow-xl rounded-xl flex flex-col justify-center items-center sm:flex-row">
-						<figure>
-							<img
-								className="object-cover rounded-xl h-full"
-								src={data?.character.image}
-								alt={data?.character.name}
-							/>
-						</figure>
-						<div className="max-w-[70dvw] p-2 gap-1">
-							<div className="flex flex-col flex-wrap gap-1">
-								<span className="card-title text-pretty overflow-hidden">
-									{data?.character.name}
-								</span>
-								{data?.character.status && (
-									<div
-										className={`badge ${
-											data?.character.status === 'Dead'
-												? 'badge-error'
-												: data?.character.status === 'Alive'
-												? 'badge-success'
-												: 'badge-warning'
-										}`}>
-										{data?.character.status}
-									</div>
-								)}
-							</div>
+			{modalOpen && (
+				<div
+					onClick={(e) => e.stopPropagation()}
+					className="relative max-h-[90dvh] max-w-[90dvw]">
+					{(data || error) && (
+						<button
+							className={`btn btn-square absolute z-30 ${
+								data ? 'bg-stone-900' : 'bg-red-900'
+							} top-0 right-0 m-[0.5rem] border-white border-2 text-white hover:bg-stone-800 hover:border-stone-900 hover:text-white`}
+							onClick={() => {
+								setModalOpen(false);
+								setIdCharacter(0);
+							}}>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className="stroke-current shrink-0 h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</button>
+					)}
+					{loading && (
+						<span className="loading loading-spinner text-accent my-10 p-6" />
+					)}
+					{error && !data && (
+						<div
+							role="alert"
+							className="alert alert-error">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className="stroke-current shrink-0 h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24">
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/>
+							</svg>
+							<span>
+								{error.message || 'We have a problem, please try again later.'}
+							</span>
+						</div>
+					)}
+					{data && (
+						<div className="relative bg-stone-900 shadow-xl rounded-xl flex flex-col justify-center items-center sm:flex-row">
+							<figure className="relative rounded-xl">
+								<img
+									className="relative object-cover mt-5 px-2 rounded-xl sm:m-0"
+									src={data?.character.image}
+									alt={data?.character.name}
+								/>
+							</figure>
 
-							<div className="flex flex-col flex-wrap w-full mt-3 gap-2">
-								<div className="flex flex-row flex-wrap w-full gap-2 text-base">
-									<span>Last known location:</span>
-									<span>{data?.character.location.name}</span>
-								</div>
-								<div className="flex flex-row flex-wrap w-full gap-2 text-base">
-									<span>Last dimension:</span>
-									<span>{data?.character.location.dimension}</span>
-								</div>
-
-								<div className="flex flex-row flex-wrap w-full gap-2 text-base">
-									<span>Origin:</span>
-									<span>{data?.character.origin.name}</span>
-								</div>
-								<div className="flex flex-row flex-wrap w-full gap-2 text-base">
-									<span>Species:</span>
-									<span>{data?.character.species}</span>
-								</div>
-								{data?.character.type && (
-									<div className="flex flex-row flex-wrap w-full gap-2 text-base">
-										<span>Type:</span>
-										<span>{data?.character.type}</span>
-									</div>
-								)}
-								<div className="flex flex-row flex-wrap w-full gap-2 text-base">
-									<span>Gender:</span>
-									<span>{data?.character.gender}</span>
-								</div>
-								<div className="flex flex-row flex-wrap w-full gap-2 text-base">
-									<span>First seen in:</span>
-									{data?.character.episode.map(
-										(
-											episode: { name: string; air_date: string },
-											index: number,
-										) => {
-											if (index === 0) {
-												return (
-													<span key={index}>
-														{episode.name} - {episode.air_date}
-													</span>
-												);
-											}
-										},
+							<div className="px-5 py-2 gap-1 ">
+								<div className="flex flex-col flex-wrap gap-1">
+									<span className="card-title text-pretty overflow-hidden">
+										{data?.character.name}
+									</span>
+									{data?.character.status && (
+										<div
+											className={`badge ${
+												data?.character.status === 'Dead'
+													? 'badge-error'
+													: data?.character.status === 'Alive'
+													? 'badge-success'
+													: 'badge-warning'
+											}`}>
+											{data?.character.status}
+										</div>
 									)}
+								</div>
+
+								<div className="flex flex-col flex-wrap w-full mt-3 gap-2">
+									<div className="flex flex-row flex-wrap w-full gap-2 text-base">
+										<span>Last known location:</span>
+										<span>{data?.character.location.name}</span>
+									</div>
+									<div className="flex flex-row flex-wrap w-full gap-2 text-base">
+										<span>Last dimension:</span>
+										<span>{data?.character.location.dimension}</span>
+									</div>
+
+									<div className="flex flex-row flex-wrap w-full gap-2 text-base">
+										<span>Origin:</span>
+										<span>{data?.character.origin.name}</span>
+									</div>
+									<div className="flex flex-row flex-wrap w-full gap-2 text-base">
+										<span>Species:</span>
+										<span>{data?.character.species}</span>
+									</div>
+									{data?.character.type && (
+										<div className="flex flex-row flex-wrap w-full gap-2 text-base">
+											<span>Type:</span>
+											<span>{data?.character.type}</span>
+										</div>
+									)}
+									<div className="flex flex-row flex-wrap w-full gap-2 text-base">
+										<span>Gender:</span>
+										<span>{data?.character.gender}</span>
+									</div>
+									<div className="flex flex-row flex-wrap w-full gap-2 text-base">
+										<span>First seen in:</span>
+										{data?.character.episode.map(
+											(
+												episode: { name: string; air_date: string },
+												index: number,
+											) => {
+												if (index === 0) {
+													return (
+														<span key={index}>
+															{episode.name} - {episode.air_date}
+														</span>
+													);
+												}
+											},
+										)}
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				)}
-			</div>
+					)}
+				</div>
+			)}
 		</div>
 	);
 }

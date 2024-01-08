@@ -14,7 +14,7 @@ export default function ElementPaginator({
 	setIdCharacter,
 }: {
 	filter: Character;
-	setIdCharacter: React.Dispatch<React.SetStateAction<number | null>>;
+	setIdCharacter: React.Dispatch<React.SetStateAction<number>>;
 }) {
 	const [page, setPage] = useState(0);
 
