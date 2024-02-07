@@ -20,12 +20,12 @@ export default function Drawer({
 }): JSX.Element {
   return (
     <div
-      className={`overflow-hidden md:relative p-5 bg-stone-900 fixed left-0 z-10 w-screen h-full md:w-auto flex flex-col gap-2
+      className={`overflow-hidden md:relative p-5 bg-stone-900 fixed left-0 z-10 w-screen h-full md:w-auto flex flex-col gap-2 min-w-80 
 			${drawerOpen ? "visible" : "hidden"} `}
     >
-      <h1 className="text-md font-bold text-center text-white">Filter by</h1>
+      <h1 className="font-bold text-center text-white text-md">Filter by</h1>
       <div className="form-control">
-        <span className="label-text text-lg mb-1">Type</span>
+        <span className="mb-1 text-lg label-text">Type</span>
         <input
           type="text"
           id="search-bar-type"
@@ -36,15 +36,15 @@ export default function Drawer({
               ["type"]: e.target.value,
             }))
           }
-          className="input input-bordered text-white w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
+          className="w-full text-white input input-bordered bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
           placeholder="Search by type"
         />
       </div>
       <div className="form-control">
-        <span className="label-text text-lg mb-1">Status</span>
+        <span className="mb-1 text-lg label-text">Status</span>
         <select
           id="status"
-          className="select select-success w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
+          className="w-full select select-success bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
           value={filter["status"] ? filter["status"] : "All"}
           onChange={(e) =>
             setFilter((prev) => {
@@ -61,11 +61,11 @@ export default function Drawer({
         </select>
       </div>
       <div className="form-control">
-        <span className="label-text text-lg mb-1">Gender</span>
+        <span className="mb-1 text-lg label-text">Gender</span>
         <select
           id="gender"
           value={filter["gender"] ? filter["gender"] : "All"}
-          className="select select-info w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
+          className="w-full select select-info bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
           onChange={(e) =>
             setFilter((prev) => {
               if (e.target.value === "All") return { ...prev, gender: "" };
@@ -82,10 +82,10 @@ export default function Drawer({
         </select>
       </div>
       <div className="form-control">
-        <span className="label-text text-lg mb-1">Species</span>
+        <span className="mb-1 text-lg label-text">Species</span>
         <select
           id="species"
-          className="select select-error w-full bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
+          className="w-full select select-error bg-stone-800 border-stone-800 hover:border-stone-900 hover:bg-stone-900"
           value={filter["species"] ? filter["species"] : "All"}
           onChange={(e) =>
             setFilter((prev) => {
@@ -109,7 +109,7 @@ export default function Drawer({
         </select>
       </div>
       <button
-        className="btn btn-outline btn-secondary w-full"
+        className="w-full btn btn-outline btn-secondary"
         onClick={() => {
           setFilter({
             gender: "",
@@ -122,8 +122,8 @@ export default function Drawer({
       >
         RESET FILTERS
       </button>
-      <div className="flex flex-row justify-center items-center">
-        <span className="label-text text-sm mb-3 text-center">
+      <div className="flex flex-row items-center justify-center">
+        <span className="mb-3 text-sm text-center label-text">
           Design by Nahuel Rosas Using{" "}
           <a
             className="text-blue-500 hover:text-blue-600"

@@ -68,7 +68,7 @@ export default function Modal({
       {modalOpen && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="relative flex max-w-[90vw] max-h-[90vh] max-w-[90vw] max-h-[90vh] justify-center items-center overflow-hidden sm:min-w-[auto] sm:max-w-[auto] sm:min-h-[auto] sm:max-h-[auto]
+          className="relative flex max-w-[90vw] max-h-[90vh] justify-center items-center overflow-hidden sm:min-w-[auto] sm:max-w-[auto] sm:min-h-[auto] sm:max-h-[auto]
 						"
         >
           {(data || error) && (
@@ -85,7 +85,7 @@ export default function Modal({
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-6 w-6"
+                className="w-6 h-6 stroke-current shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
               >
@@ -99,13 +99,13 @@ export default function Modal({
             </button>
           )}
           {loading && (
-            <span className="loading loading-spinner text-accent my-10 p-6" />
+            <span className="p-6 my-10 loading loading-spinner text-accent" />
           )}
           {error && !data && (
             <div role="alert" className="alert alert-error">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-6 w-6"
+                className="w-6 h-6 stroke-current shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
               >
@@ -122,7 +122,7 @@ export default function Modal({
             </div>
           )}
           {data && (
-            <div className="relative bg-stone-900 shadow-xl rounded-xl flex flex-col justify-center items-center sm:flex-row">
+            <div className="relative flex flex-col items-center justify-center shadow-xl bg-stone-900 rounded-xl sm:flex-row">
               <figure className="relative rounded-xl w-[100%] h-[100%]">
                 <img
                   className="relative object-cover w-[100%] h-[100%] rounded-xl sm:m-0"
@@ -131,9 +131,9 @@ export default function Modal({
                 />
               </figure>
 
-              <div className="px-5 py-2 gap-1 ">
+              <div className="gap-1 px-5 py-2 ">
                 <div className="flex flex-col flex-wrap gap-1">
-                  <span className="card-title text-pretty overflow-hidden">
+                  <span className="overflow-hidden card-title text-pretty">
                     {data?.character.name}
                   </span>
                   {data?.character.status && (
@@ -151,7 +151,7 @@ export default function Modal({
                   )}
                 </div>
 
-                <div className="flex flex-col flex-wrap w-full mt-3 gap-2">
+                <div className="flex flex-col flex-wrap w-full gap-2 mt-3">
                   <div className="flex flex-row flex-wrap w-full gap-2 text-base">
                     <span>Last known location:</span>
                     <span>{data?.character.location.name}</span>
@@ -184,7 +184,7 @@ export default function Modal({
                     {data?.character.episode.map(
                       (
                         episode: { name: string; air_date: string },
-                        index: number,
+                        index: number
                       ) => {
                         if (index === 0) {
                           return (
@@ -193,7 +193,7 @@ export default function Modal({
                             </span>
                           );
                         }
-                      },
+                      }
                     )}
                   </div>
                 </div>

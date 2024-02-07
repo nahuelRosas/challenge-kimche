@@ -35,18 +35,18 @@ export default function App() {
         idCharacter={idCharacter}
         setIdCharacter={setIdCharacter}
       />
-      <div className="relative flex flex-row flex-wrap justify-around items-center top-0 left-0 navbar bg-stone-900 w-screen h-16">
+      <div className="relative top-0 left-0 flex flex-row flex-wrap items-center justify-around w-screen h-16 navbar bg-stone-900">
         <SearchBar
           filter={filter}
           setFilter={setFilter}
           leftElement={
-            <label className="btn btn-circle swap swap-rotate join-item btn btn-square bg-stone-900 border-stone-800 hover:bg-stone-800 hover:text-2xl hover:border-stone-900 border-stone-800 text-white">
+            <label className="text-white btn btn-circle swap swap-rotate join-item btn-square bg-stone-900 border-stone-800 hover:bg-stone-800 hover:text-2xl hover:border-stone-900">
               <input
                 onClick={() => setDrawerOpen(!drawerOpen)}
                 type="checkbox"
               />
               <svg
-                className="swap-off fill-current"
+                className="fill-current swap-off"
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -55,7 +55,7 @@ export default function App() {
                 <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
               </svg>
               <svg
-                className="swap-on fill-current"
+                className="fill-current swap-on"
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -67,7 +67,7 @@ export default function App() {
           }
         />
       </div>
-      <div className="w-full h-full overflow-y-auto flex flex-row justify-around">
+      <div className="flex flex-row justify-around w-full h-full overflow-y-auto">
         <Drawer drawerOpen={drawerOpen} filter={filter} setFilter={setFilter} />
         <ElementPaginator filter={filter} setIdCharacter={setIdCharacter} />
       </div>

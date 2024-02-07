@@ -45,9 +45,9 @@ export default function Card({
           alt={name}
         />
       </figure>
-      <div className="px-5 py-2 gap-1 ">
+      <div className="gap-1 px-5 py-2 ">
         <div className="flex flex-col flex-wrap gap-1">
-          <span className="card-title text-pretty overflow-hidden">{name}</span>
+          <span className="overflow-hidden card-title text-pretty">{name}</span>
 
           {status && (
             <div
@@ -70,18 +70,18 @@ export default function Card({
           <p className="text-sm">{location.name}</p>
         </div>
         <div className="flex flex-row flex-wrap gap-2 mt-3 text-xs">
-          <div className="flex items-center border border-white text-white px-2 py-1 rounded-full bg-transparent text-center">
+          <div className="flex items-center px-2 py-1 text-center text-white bg-transparent border border-white rounded-full">
             <p className={`${species.length > 20 ? "marquee" : ""}`}>
               {species}
             </p>
           </div>
-          <div className="flex items-center border border-white text-white px-2 py-1 rounded-full bg-transparent text-center">
+          <div className="flex items-center px-2 py-1 text-center text-white bg-transparent border border-white rounded-full">
             <p className={`${gender.length > 20 ? "marquee" : ""}`}>{gender}</p>
           </div>
         </div>
         {type && (
           <div className="flex w-full mt-3">
-            <div className="flex text-xs items-center border border-white text-white px-2 py-1 rounded-full bg-transparent text-center">
+            <div className="flex items-center px-2 py-1 text-xs text-center text-white bg-transparent border border-white rounded-full">
               <p className={`${type.length > 20 ? "marquee" : ""}`}>{type}</p>
             </div>
           </div>

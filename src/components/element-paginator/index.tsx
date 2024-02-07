@@ -81,17 +81,17 @@ export default function ElementPaginator({
                 status={character.status}
                 type={character.type}
               />
-            ),
+            )
           )}
         {loading && (
-          <span className="loading loading-spinner text-accent my-10 p-6" />
+          <span className="p-6 my-10 loading loading-spinner text-accent" />
         )}
 
         {data && !data.characters.info.count && (
           <div className="flex flex-col items-center justify-center w-full h-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="stroke-current shrink-0 w-24 h-24"
+              className="w-24 h-24 stroke-current shrink-0"
               fill="none"
               viewBox="0 0 24 24"
             >
@@ -110,7 +110,7 @@ export default function ElementPaginator({
           <div role="alert" className="alert alert-error">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="stroke-current shrink-0 h-6 w-6"
+              className="w-6 h-6 stroke-current shrink-0"
               fill="none"
               viewBox="0 0 24 24"
             >

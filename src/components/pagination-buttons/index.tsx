@@ -73,7 +73,7 @@ export default function PaginationButtons({
   }
 
   return (
-    <div className="join w-auto flex justify-center align-center my-2">
+    <div className="flex justify-center w-auto my-2 join align-center">
       {generatePageButtons().map((button) => button)}
     </div>
   );

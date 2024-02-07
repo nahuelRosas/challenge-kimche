@@ -31,7 +31,7 @@ export default function SearchBar({
   }, [setFilter]);
   return (
     <>
-      <div className="cursor-pointer w-full max-w-screen px-4 justify-center items-center gap-3 ">
+      <div className="items-center justify-center w-full gap-3 px-4 cursor-pointer max-w-screen ">
         {leftElement}
         <input
           type="text"
@@ -47,7 +47,7 @@ export default function SearchBar({
           className="input input-bordered text-white w-screen max-w-[90dvw] cursor-pointer bg-stone-900"
         />
         <a
-          href="https://github.com/nahuelrosas/challenge-kimche"
+          href="https://github.com/nahuelRosas/rick-and-morty-frontend"
           target="_blank"
           rel="noreferrer"
         >
