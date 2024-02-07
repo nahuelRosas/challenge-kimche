@@ -1,19 +1,26 @@
-import { ApolloClient, NormalizedCacheObject, gql } from '@apollo/client';
+import { ApolloClient, NormalizedCacheObject, gql } from "@apollo/client";
 
+/**
+ * GraphQL query to get characters with pagination and filtering options.
+ *
+ * @param {number} page - The page number of the characters to retrieve.
+ * @param {FilterCharacter} filter - The filter options to apply to the characters.
+ * @returns {Promise<QueryResult>} The result of the characters query.
+ */
 const GET_CHARACTERS = gql`
-	query getAlltype($page: Int!, $filter: FilterCharacter) {
-		characters(page: $page, filter: $filter) {
-			info {
-				count
-				pages
-				next
-				prev
-			}
-			results {
-				type
-			}
-		}
-	}
+  query getAlltype($page: Int!, $filter: FilterCharacter) {
+    characters(page: $page, filter: $filter) {
+      info {
+        count
+        pages
+        next
+        prev
+      }
+      results {
+        type
+      }
+    }
+  }
 `;
 
 /**
@@ -22,34 +29,34 @@ const GET_CHARACTERS = gql`
  * @returns An array of unique character types.
  */
 export async function GetAlltype(client: ApolloClient<NormalizedCacheObject>) {
-	const type = new Set();
-	let currentPage = 1;
+  const type = new Set();
+  let currentPage = 1;
 
-	while (currentPage <= 42) {
-		const { loading, data, error } = await client.query({
-			query: GET_CHARACTERS,
-			variables: { page: currentPage },
-		});
+  while (currentPage <= 42) {
+    const { loading, data, error } = await client.query({
+      query: GET_CHARACTERS,
+      variables: { page: currentPage },
+    });
 
-		if (error) {
-			console.error('Error fetching type:', error);
-			break;
-		}
+    if (error) {
+      console.error("Error fetching type:", error);
+      break;
+    }
 
-		if (loading) {
-			continue;
-		}
+    if (loading) {
+      continue;
+    }
 
-		for (const result of data.characters.results) {
-			type.add(result.type);
-		}
+    for (const result of data.characters.results) {
+      type.add(result.type);
+    }
 
-		if (!data.characters.info.next) {
-			break;
-		}
-		console.log(type);
-		currentPage++;
-	}
-	const uniquetype = Array.from(type);
-	return uniquetype;
+    if (!data.characters.info.next) {
+      break;
+    }
+    console.log(type);
+    currentPage++;
+  }
+  const uniquetype = Array.from(type);
+  return uniquetype;
 }

@@ -1,77 +1,219 @@
-# Desafío para Dev
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-Nombre postulante: Nahuel Rosas
+- [Interfaces](#interfaces)
+  - [Interface: Character](#interface-character)
+    - [Table of contents](#table-of-contents)
+    - [Properties](#properties)
+- [rick-and-morty-front-end](#rick-and-morty-front-end)
+  - [Table of contents](#table-of-contents-1)
+    - [Modules](#modules)
+- [Modules](#modules-1)
+  - [Module: App](#module-app)
+    - [Table of contents](#table-of-contents-2)
+    - [Functions](#functions)
+  - [Module: main](#module-main)
+  - [Module: types](#module-types)
+    - [Table of contents](#table-of-contents-3)
+    - [Type Aliases](#type-aliases)
+  - [Module: vite-env](#module-vite-env)
 
-Link a la app en producción: [rick-and-morty-kimche.vercel.app](https://rick-and-morty-kimche.vercel.app/)
-## Instrucciones
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-- Desarrolla una aplicación web con React y Vite que permita a los usuarios buscar y visualizar información sobre personajes de la serie "Rick and Morty" utilizando la [Api de Rick and Morty](https://rickandmortyapi.com/documentation/#graphql)
-- En la carpeta **challenge-dev** se encuentra una base para que partas. Puedes decidir no usarla.
-- Debes crear un repositorio en github e invitar a [ieastorga](https://github.com/ieastorga) y a [gomara](https://github.com/gomara) como colaboradores.
-- Avisar via mail cuando este listo.
 
-### Requisitos Funcionales
+<a name="readmemd"></a>
 
-#### Página de Búsqueda:
+rick-and-morty-front-end / [Modules](#modulesmd)
 
-- Implementa una página de inicio con un campo de búsqueda.
-- Los usuarios deben poder ingresar el nombre de un personaje en el campo de búsqueda.
-- La aplicación debe mostrar los resultados correspondientes a la búsqueda.
+# Interfaces
 
-#### Filtros:
 
-- Implementa 3 filtros en la página de busqueda, (status, specie, gender).
-- Los usuarios deben poder seleccionar el valor deseado en cada filtro.
-- La aplicación debe mostrar los resultados correspondientes a la seleccion de los filtros. puedes inluir o no un boton para aplicar los filtros.
-- Se debe incluir un boton para resetear todos los filtros incluido el buscador.
+<a name="interfacestypescharactermd"></a>
 
-#### Visualización de Detalles:
+[rick-and-morty-front-end](#readmemd) / [Modules](#modulesmd) / [types](#modulestypesmd) / Character
 
-- Al hacer clic en un personaje de la lista de resultados, la aplicación debe mostrar una página o modal de detalles con información adicional sobre el personaje seleccionado.
-- Muestra al menos la imagen, nombre, especie, estado y origen del personaje.
+## Interface: Character
 
-#### GraphQL:
+[types](#modulestypesmd).Character
 
-- Utiliza GraphQL para realizar consultas a la API de Rick and Morty en lugar de utilizar solo REST.
+Represents a character in the Rick and Morty universe.
 
-#### Estilo y Diseño:
+### Table of contents
 
-- Aplica estilos para que la aplicación sea visualmente atractiva y fácil de usar.
-- Puedes utilizar bibliotecas de diseño o crear tus propios estilos.
+#### Properties
 
-#### Paginación(BONUS):
+- [gender](#gender)
+- [name](#name)
+- [species](#species)
+- [status](#status)
+- [type](#type)
 
-- Implementa paginación en la lista de resultados para mostrar más personajes a medida que el usuario se desplaza.
-- La API de Rick and Morty soporta paginación, puedes utilizarla para cargar más resultados.
+### Properties
 
-Se espera que logres hacer una aplicación parecida a la del siguiente diagrama (es solo un ejemplo):
+#### gender
 
-![main](imgs/main.png)
-![modal](imgs/modal.png)
+• **gender**: [`gender`](#gender)
 
-La funcionalidad y estructura debe ser igual, pero el diseño y variantes (por ejemplo, cambiar colores de las cosas) queda a tu gusto.
+##### Defined in
 
-Además de esto, se espera que hagas deploy de tu app en el servicio que desees (Vercel, Heroku, Netlify, AWS, Github Pages, etc).
+[types.ts:35](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L35)
 
-## Consideraciones
+___
 
-- Se espera que uses buenas prácticas como gitflow (pull requests y commits), orden del código, estructura, eficiencia, etc.
-- Puedes dejar comentarios de decisiones que tuviste que tomar y del por qué en este repositorio.
-- Se va a considerar un buen diseño de UX/UI.
+#### name
 
-## Hints
+• **name**: `string`
 
-Acá van algunas cosas que pueden ser útiles (o no 👀):
+##### Defined in
 
-- [Gitignore](https://www.toptal.com/developers/gitignore)
-- [GraphQL](https://www.howtographql.com/)
-- [React](https://es.reactjs.org/)
-- [Styled components](https://styled-components.com/docs/basics)
-- [ApolloClient](https://www.apollographql.com/docs/react/)
-- [Lodash](https://lodash.com/)
-- [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
-- [Commitlint](https://commitlint.js.org/#/)
-- [Eslint](https://eslint.org/)
-- [Husky](https://www.npmjs.com/package/husky)
-- [Vite](https://vitejs.dev/)
-- [Tailwind](https://tailwindcss.com/)
+[types.ts:32](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L32)
+
+___
+
+#### species
+
+• **species**: [`species`](#species)
+
+##### Defined in
+
+[types.ts:34](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L34)
+
+___
+
+#### status
+
+• **status**: [`status`](#status)
+
+##### Defined in
+
+[types.ts:33](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L33)
+
+___
+
+#### type
+
+• **type**: `string`
+
+##### Defined in
+
+[types.ts:36](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L36)
+
+
+<a name="modulesmd"></a>
+
+[rick-and-morty-front-end](#readmemd) / Modules
+
+# rick-and-morty-front-end
+
+## Table of contents
+
+### Modules
+
+- [App](#modulesappmd)
+- [main](#modulesmainmd)
+- [types](#modulestypesmd)
+- [vite-env](#modulesvite_envmd)
+
+# Modules
+
+
+<a name="modulesappmd"></a>
+
+[rick-and-morty-front-end](#readmemd) / [Modules](#modulesmd) / App
+
+## Module: App
+
+### Table of contents
+
+#### Functions
+
+- [default](#default)
+
+### Functions
+
+#### default
+
+▸ **default**(): `Element`
+
+Renders the main application component.
+
+##### Returns
+
+`Element`
+
+The JSX element representing the App component.
+
+##### Defined in
+
+[App.tsx:12](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/App.tsx#L12)
+
+
+<a name="modulesmainmd"></a>
+
+[rick-and-morty-front-end](#readmemd) / [Modules](#modulesmd) / main
+
+## Module: main
+
+
+<a name="modulestypesmd"></a>
+
+[rick-and-morty-front-end](#readmemd) / [Modules](#modulesmd) / types
+
+## Module: types
+
+### Table of contents
+
+#### Interfaces
+
+- [Character](#interfacestypescharactermd)
+
+#### Type Aliases
+
+- [gender](#gender)
+- [species](#species)
+- [status](#status)
+
+### Type Aliases
+
+#### gender
+
+Ƭ **gender**: ``"Male"`` \| ``"Female"`` \| ``"Genderless"`` \| ``"Unknown"`` \| ``""``
+
+Represents the gender of a character.
+Possible values are 'Male', 'Female', 'Genderless', 'Unknown', or an empty string.
+
+##### Defined in
+
+[types.ts:21](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L21)
+
+___
+
+#### species
+
+Ƭ **species**: ``"Human"`` \| ``"Alien"`` \| ``"Humanoid"`` \| ``"Unknown"`` \| ``"Mythological Creature"`` \| ``"Poopybutthole"`` \| ``"Animal"`` \| ``"Robot"`` \| ``"Cronenberg"`` \| ``"Disease"`` \| ``""``
+
+Represents the species of a character in the Rick and Morty universe.
+
+##### Defined in
+
+[types.ts:4](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L4)
+
+___
+
+#### status
+
+Ƭ **status**: ``"Alive"`` \| ``"Dead"`` \| ``"Unknown"`` \| ``""``
+
+Represents the status of a character.
+Possible values are 'Alive', 'Dead', 'Unknown', or an empty string.
+
+##### Defined in
+
+[types.ts:26](https://github.com/nahuelRosas/rick-and-morty-frontend/blob/1a6f819/src/types.ts#L26)
+
+
+<a name="modulesvite_envmd"></a>
+
+[rick-and-morty-front-end](#readmemd) / [Modules](#modulesmd) / vite-env
+
+## Module: vite-env
